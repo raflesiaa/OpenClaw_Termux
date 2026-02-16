@@ -42,7 +42,9 @@ ok "Root access verified!"
 # 2. Update Termux & Install Root Tools
 echo -e "\n${BLUE}[2/5]${RESET} Setting up Termux environment..."
 pkg update -y && pkg upgrade -y
-pkg install -y tsu termux-chroot git ffmpeg python3 make g++ ca-certificates
+# We install 'proot' because it provides the 'termux-chroot' command
+# Added explicit quotes for g++ to prevent terminal misinterpretation
+pkg install -y tsu proot git ffmpeg python3 make "g++" ca-certificates
 ok "Root tools and dependencies ready!"
 
 # 3. Install Node.js (LTS)
@@ -52,6 +54,7 @@ ok "Node.js $(node -v) installed!"
 
 # 4. Install OpenClaw (Stable Version)
 echo -e "\n${BLUE}[4/5]${RESET} Installing OpenClaw Core (v2026.2.12)..."
+# termux-chroot helps mapping standard Linux paths like /tmp
 termux-chroot npm install -g openclaw@2026.2.12 --no-optional
 ok "OpenClaw successfully installed!"
 
