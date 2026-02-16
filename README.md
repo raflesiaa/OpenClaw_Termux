@@ -34,13 +34,13 @@ pkg install git -y && git clone https://github.com/raflesiaa/OpenClaw_Termux && 
 ### For Standard Mode (Non-Root)
 ```bash
 proot-distro login ubuntu
-openclaw gateway
+openclaw gateway --verbose
 ```
 
 ### For Root Mode (Rooted)
 ```bash
 termux-chroot
-openclaw gateway
+openclaw gateway --verbose
 ```
 
 ---
